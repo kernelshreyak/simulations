@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Elevator Simulation</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row" >
+			<div style="font-size: 30px" class="col-sm-6" style="border: 1px solid black;">
+				<div class="alert alert-success">
+					Elevator Floor: <span id="floorhead">0</span>
+				</div>
+				<br>
+				<div class="alert alert-success">
+					Elevator Status: <span id="status1"></span>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="alert alert-info">Floor 4: <span id="floor4"></span></div>
+				<div class="alert alert-info">Floor 3: <span id="floor3"></span></div>
+				<div class="alert alert-info">Floor 2: <span id="floor2"></span></div>
+				<div class="alert alert-info">Floor 1: <span id="floor1"></span></div>
+				<div class="alert alert-info">Floor 0: <span id="floor0"></span></div>
+			</div>
+		</div>
+	</div>
+		
+<script>
+
+	R = [0,0,0,0,0]; //stores call requests count of all 5 floors
+	var occupancy = 0;
+	var locked = 0;
+	var capacity = 8; //elevator capacity
+	var elevator_status = 0; //1: MOVING, 0: STOPPED
+	var currentfloor = 0;  
+
+
+	function sleep(ms) {
+	  return new Promise(resolve => setTimeout(resolve, ms));
+	}
+
+	function getDest(floor){
+		return floor == 4 ? 0 : floor + 1;
+	}
+
+	function updateElevatorStatus(status){
+		console.log("STATUS:" + status);
+		elevator_status = status;
+		if (elevator_status == 0) $("#status1").html('<font color="red">STOPPED</font>');
+		else $("#status1").html('<font color="green">MOVING</font>');
+	}
+
+	function displayFloorPersons(floor,count){
+		$("#floor" + floor).html("");
+		for (var i = 0; i < count; i++) {
+			$("#floor" + floor).append('<img width=20 height=20 src="https://icon-library.com/images/small-person-icon/small-person-icon-24.jpg">');
+		}
+	}
+
+	function addPerson(floor = 0){
+		$("#floor" + floor).append('<img width=20 height=20 src="https://icon-library.com/images/small-person-icon/small-person-icon-24.jpg">');
+	}
+
+	function callElevator(floor = 0){
+		R[floor] += 1;
+	}
+
+	function fillElevator(floor){
+		locked = 1;
+		return new Promise(resolve => setTimeout(function(){
+			if ((occupancy + R[floor]) <= capacity){
+				var V = R[floor];
+			}
+			else{
+				var V = capacity - occupancy;
+			}
+
+			occupancy += V;
+			R[floor] -=V;
+
+			locked = 0;
+			
+			displayFloorPersons(floor,R[floor]);
+
+		},5000));
+	}
+
+	async function moveElevator(){
+		if(locked == 0){
+			updateElevatorStatus(1);
+			$("#floorhead").html(currentfloor);
+
+			await sleep(4000);
+
+			var targetfloor = getDest(currentfloor);
+			console.log("TARGET floor:" + targetfloor);
+			while(currentfloor != targetfloor && elevator_status == 1){
+				updateElevatorStatus(1);
+				if(currentfloor < targetfloor) currentfloor +=1 ;
+				else currentfloor -= 1;
+
+				if(R[currentfloor] > 0){
+					updateElevatorStatus(0);
+					await fillElevator(currentfloor);
+					updateElevatorStatus(1);
+					return;
+				}
+			}
+
+			updateElevatorStatus(0);
+			await fillElevator(targetfloor);
+			updateElevatorStatus(1);
+		}
+			
+
+	}
+
+
+
+
+
+	setInterval(function(){
+		var randfloor = parseInt(Math.random()*4+1);
+		addPerson(randfloor);
+		callElevator(randfloor);
+	},3500);
+
+	setInterval(function(){
+		moveElevator();
+	},1000);
+
+
+	
+</script>
+</body>
+</html>
