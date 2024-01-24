@@ -1,0 +1,117 @@
+<html>
+  <title>Fractal Trees using JavaScript</title>
+  <script src="../assets/js/jquery-3.2.1.min.js"></script>
+  <h3 align="center">Fractal Tree generated using HTML5 and JavaScript</h3>
+  <style>
+    .form {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      grid-gap: 16px;
+    }
+
+    input {
+      grid-column: 2 / 3;
+      width: 120px;
+    }
+  </style>
+
+  <body>
+    <div>
+      <p>
+        This is an implementation of the Fractal Tree Algorithm, based on the
+        code from
+        <a
+          href="http://progur.com/2016/10/procedural-generation-create-fractal-trees-javascript.html"
+          >here</a
+        >.
+      </p>
+      <p>
+        The parameters for the simulation can be modified using the contols
+        below:
+      </p>
+      <br />
+    </div>
+    <div class="form">
+      StartX:<input type="text" id="startx_input" value="350" />
+      <br />
+      StartY:<input type="text" id="starty_input" value="600" />
+      <br />
+      Tree Length:<input type="text" id="length_input" value="120" />
+      <br />
+      L_a:<input type="text" id="la_input" value="10" />
+      <br />
+      L_b:<input type="text" id="lb_input" value="10" />
+      <br />
+      Initial Angle:<input type="text" id="angle_input" value="0" />
+      <br />
+      Initial Branch Width:<input
+        type="text"
+        id="branchwidth_input"
+        value="10"
+      />
+      <br />
+      <input id="simulate" type="button" value="Simulate" />
+      <br />
+    </div>
+    <canvas
+      id="mycanvas"
+      width="800"
+      height="600"
+      style="border: 1px solid #000000"
+    ></canvas>
+
+    <script>
+      //The main script for generating the fractal Tree
+      var canvas = document.getElementById("mycanvas");
+      var ctx = canvas.getContext("2d");
+      //set color for tree
+      ctx.strokeStyle = "darkgreen";
+      ctx.fillStyle = "green";
+
+      var L_a = 10;
+      var L_b = 10;
+
+      function draw(startX, startY, len, angle, branchWidth) {
+        ctx.lineWidth = branchWidth;
+        var L_a = $("#la_input").val();
+        var L_b = $("#lb_input").val();
+        ctx.beginPath();
+        ctx.save();
+
+        ctx.translate(startX, startY);
+        ctx.rotate((angle * Math.PI) / 180);
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, -len);
+        ctx.stroke();
+
+        if (len < L_a) {
+          //max_length denotes maximum branch length
+          ctx.beginPath();
+          ctx.arc(0, -len, L_b, 0, Math.PI / 2);
+          ctx.fill();
+          ctx.restore();
+          return;
+        }
+
+        draw(0, -len, len * 0.8, angle + 10, branchWidth * 0.8);
+        draw(0, -len, len * 0.8, angle - 10, branchWidth * 0.8);
+
+        ctx.restore();
+      }
+
+      draw(350, 600, 120, 0, 10);
+
+      $("#simulate").click(function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
+        //draw the tree
+        draw(
+          parseFloat($("#startx_input").val()),
+          parseFloat($("#starty_input").val()),
+          parseFloat($("#length_input").val()),
+          parseFloat($("#angle_input").val()),
+          parseFloat($("#branchwidth_input").val())
+        );
+      });
+    </script>
+  </body>
+</html>

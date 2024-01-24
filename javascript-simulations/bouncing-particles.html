@@ -1,0 +1,72 @@
+<h2 style="color: blue">
+  <b><i>Bouncing Particles</i></b>
+</h2>
+<p>Created in HTML5 and Javascript by Shreyak Chakraborty (C) 2018</p>
+<br />
+<p>Click on the white canvas to add particles</p>
+<canvas
+  id="canvas"
+  width="600"
+  height="600"
+  style="border: 5px solid black"
+></canvas>
+
+<script>
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+
+  canvas.addEventListener("mousedown", createParticle, false);
+
+  var rad = 5;
+  var particle_num = 50;
+  var particles = {},
+    particle_index = 0;
+  var dt = 1;
+
+  function Particle(x, y, vx, vy, ax, ay) {
+    //create and initialize a particle
+    this.x = x;
+    this.y = y;
+    this.vx = vx;
+    this.vy = vy;
+    this.ax = ax;
+    this.ay = ay;
+    particle_index++;
+    particles[particle_index] = this;
+  }
+
+  Particle.prototype.draw = function () {
+    if (this.x > canvas.width - rad || this.x < rad) this.vx *= -1;
+    if (this.y > canvas.height - rad || this.y < rad) this.vy *= -1;
+
+    this.x += this.vx + 0.5 * this.ax;
+    this.y += this.vy + 0.5 * this.ay;
+
+    this.vx += this.ax;
+    this.vy += this.ay;
+
+    ctx.beginPath();
+    ctx.fillStyle = "red";
+    ctx.arc(this.x, this.y, rad, 0, Math.PI * 2, false);
+    ctx.fill();
+    ctx.closePath();
+  };
+
+  function createParticle(event) {
+    var gx = event.x;
+    var gy = event.y;
+
+    gx -= canvas.offsetLeft;
+    gy -= canvas.offsetTop;
+
+    new Particle(gx, gy, 2, 3, 0, 1.0);
+  }
+
+  function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var j in particles) particles[j].draw();
+  }
+
+  setInterval(update, 10);
+</script>
