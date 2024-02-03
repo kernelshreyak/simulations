@@ -1,7 +1,6 @@
 import open3d as o3d
 import numpy as np
 import time
-from pynput import keyboard
 
 def create_particle(radius, center):
     """ Create a particle with given radius and center. """
