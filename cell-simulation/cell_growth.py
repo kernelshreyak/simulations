@@ -5,6 +5,7 @@ import numpy as np
 import tkinter as tk
 import multiprocessing
 import random
+import time
 
 class GrowthEnvironment:
     def __init__(self,environment_energy: float) -> None:
@@ -26,14 +27,14 @@ class Cell:
         self.position = position
         self.cell_radius = cell_radius
         self.shape = CellTypes.SPHERICAL_CELL
-        self.separation_factor = 0.6
+        self.separation_factor = 0.9
 
     
     def multiply(self):
         self.health -= 1
         growth_factor_x = np.random.choice(np.array([0,1]), p=[0.5,0.5])
-        growth_factor_y = np.random.choice(np.array([0,1]), p=[0.5,0.5])
-        growth_factor_z = np.random.choice(np.array([0,1]), p=[0.5,0.5])
+        growth_factor_y = np.random.choice(np.array([0,1]), p=[0.8,0.2])
+        growth_factor_z = np.random.choice(np.array([0,1]), p=[0.6,0.4])
         new_cell_position = self.position + [self.separation_factor*growth_factor_x,self.separation_factor*growth_factor_y,self.separation_factor*growth_factor_z]
         # print("new cell at: ",new_cell_position)
         return Cell(digital_dna=self.digital_dna,health=10,cell_radius=self.cell_radius,position=new_cell_position)
@@ -48,6 +49,7 @@ class Organism:
         self.max_growth = max_growth
         self.visualizer =  o3d.visualization.Visualizer()
         self.rendering_thread = None
+        self.real_time_render = False
 
     def canGrow(self):
         return self.current_growth < self.max_growth
@@ -96,6 +98,11 @@ class Organism:
                 cell_color = [0.5,0,0]
             cell_obj.paint_uniform_color(cell_color)
             self.visualizer.add_geometry(cell_obj)
+            
+            if self.real_time_render:
+                self.visualizer.poll_events()
+                self.visualizer.update_renderer()
+                time.sleep(0.05)
     
         while True:
             self.visualizer.poll_events()
@@ -117,7 +124,7 @@ env_energy_input.pack()
 
 tk.Label(text="Max Growth").pack()
 max_growth_input = tk.Entry(width=50)
-max_growth_input.insert(tk.END,"500")
+max_growth_input.insert(tk.END,"100")
 max_growth_input.pack()
 
 start_btn = tk.Button(
