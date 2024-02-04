@@ -2,7 +2,8 @@
 
 import open3d as o3d
 import numpy as np
-
+import tkinter as tk
+import multiprocessing
 
 class GrowthEnvironment:
     def __init__(self,environment_energy: float) -> None:
@@ -45,6 +46,7 @@ class Organism:
         self.current_growth = 0
         self.max_growth = max_growth
         self.visualizer =  o3d.visualization.Visualizer()
+        self.rendering_thread = None
 
     def canGrow(self):
         return self.current_growth < self.max_growth
@@ -69,12 +71,15 @@ class Organism:
         print("Cell count after growth: ",len(self.cells))
 
     # Should be called only after growth is completed
+    def startRender(self):
+        self.rendering_thread = multiprocessing.Process(target=self.render, args=())
+        self.rendering_thread.start()
+
     def render(self):
         if self.canGrow():
             raise Exception("Cannot render organism, growth not completed")
         
-        self.visualizer.create_window(window_name='Cell Growth Simulation', width=1600, height=900)
-
+        self.visualizer.create_window(window_name='Cell Growth Render', width=1600, height=900)
         for cell in self.cells:
             cell_obj = o3d.geometry.TriangleMesh.create_sphere(radius=cell.cell_radius)
             cell_obj.translate(cell.position)
@@ -85,7 +90,7 @@ class Organism:
                 cell_color = [0.5,0,0]
             cell_obj.paint_uniform_color(cell_color)
             self.visualizer.add_geometry(cell_obj)
-        
+    
         while True:
             self.visualizer.poll_events()
             self.visualizer.update_renderer()
@@ -93,15 +98,69 @@ class Organism:
 
     def stopRender(self):
         self.visualizer.destroy_window()
+        self.rendering_thread.terminate()
+
+window = tk.Tk()
+window.title("Cell growth simulation")
+
+tk.Label(text="Environment Energy").pack()
+env_energy_input = tk.Entry(width=50)
+env_energy_input.insert(tk.END,"100")
+env_energy_input.pack()
+
+tk.Label(text="Max Growth").pack()
+max_growth_input = tk.Entry(width=50)
+max_growth_input.insert(tk.END,"500")
+max_growth_input.pack()
+
+start_btn = tk.Button(
+    text="Start",
+    background="green",
+    width=10,
+    height=2,
+)
+start_btn.pack()
+
+stop_btn = tk.Button(
+    text="Stop",
+    width=10,
+    background="red",
+    height=2,
+)
+stop_btn.pack()
+
+# ----------------handler functions--------------------
+organism: Organism = None
+
+def handle_start(event):
+    try:
+        global organism
+        if organism is None:
+            environment = GrowthEnvironment(environment_energy=int(env_energy_input.get()))
+            organism = Organism(growth_centre=np.array([0,0,0]),max_growth=int(max_growth_input.get()))
+            organism.grow(growth_environment=environment)
+            organism.startRender()
+        else:
+            raise Exception("Organism already exists.Stop the session and start a new growth simulation")
+    except Exception as e:
+        print(e)
+        
+def handle_stop(event):
+    global organism
+    global window
+    if organism is not None: 
+        organism.stopRender()
+        organism = None
+# -----------------------------------------------------
 
 
-environment = GrowthEnvironment(environment_energy=100)
-organism = Organism(growth_centre=np.array([0,0,0]),max_growth=500)
+start_btn.bind("<Button-1>",handle_start)
+stop_btn.bind("<Button-1>",handle_stop)
 
-organism.grow(growth_environment=environment)
+window.mainloop()
 
-organism.render()
-organism.stopRender()
+
+
 
 
 
