@@ -4,6 +4,7 @@ import open3d as o3d
 import numpy as np
 import tkinter as tk
 import multiprocessing
+import random
 
 class GrowthEnvironment:
     def __init__(self,environment_energy: float) -> None:
@@ -54,6 +55,11 @@ class Organism:
     # parse the digital_dna to determine next growth step for the cell group
     def grow(self,growth_environment: GrowthEnvironment):
         for i in range(self.max_growth):
+            # decide which cell to multiply
+            cellpointer = i
+            if i > 1:
+                cellpointer = random.randrange(0,len(self.cells) - 1)
+
             if self.canGrow():
                 if self.current_growth == 0:
                     print("[ORGANISM]: Growth started")
@@ -62,7 +68,7 @@ class Organism:
                 growth_environment.consumeEnergy(len(self.cells))
 
                 # try to multiply cells and then increment growth iteration
-                newcell = self.cells[i].multiply()
+                newcell = self.cells[cellpointer].multiply()
                 self.cells.append(newcell)
 
                 self.current_growth += 1
@@ -98,7 +104,8 @@ class Organism:
 
     def stopRender(self):
         self.visualizer.destroy_window()
-        self.rendering_thread.terminate()
+        if self.rendering_thread is not None:
+            self.rendering_thread.terminate()
 
 window = tk.Tk()
 window.title("Cell growth simulation")
