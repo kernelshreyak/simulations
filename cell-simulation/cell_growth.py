@@ -36,7 +36,6 @@ class Cell:
         growth_factor_y = np.random.choice(np.array([0,1]), p=[0.8,0.2])
         growth_factor_z = np.random.choice(np.array([0,1]), p=[0.6,0.4])
         new_cell_position = self.position + [self.separation_factor*growth_factor_x,self.separation_factor*growth_factor_y,self.separation_factor*growth_factor_z]
-        # print("new cell at: ",new_cell_position)
         return Cell(digital_dna=self.digital_dna,health=10,cell_radius=self.cell_radius,position=new_cell_position)
             
 
