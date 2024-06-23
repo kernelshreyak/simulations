@@ -3,3 +3,6 @@ scipy
 matplotlib
 simpy
 pygame
+pandas
+pyarrow
+seaborn
