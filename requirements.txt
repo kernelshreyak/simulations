@@ -6,3 +6,4 @@ pygame
 pandas
 pyarrow
 seaborn
+pybullet
