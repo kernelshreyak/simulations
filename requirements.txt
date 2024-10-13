@@ -7,3 +7,4 @@ pandas
 pyarrow
 seaborn
 pybullet
+manim
