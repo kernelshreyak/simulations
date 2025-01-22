@@ -17,11 +17,14 @@ Primary functions and their roles:
 
 CUDA usage ensures efficient computation by leveraging parallel processing capabilities for particle interactions.
 """
-
 import numpy as np
 import math
 from numba import cuda
+from tqdm import tqdm  # Import tqdm for progress bar
 from simulation_config import REPULSIVE_CONSTANT,PARTICLE_MASS,NUM_PARTICLES,SIMULATION_TIME,TIME_STEP,BOUNCE_FACTOR_BOUNDARY,BOUNDARY_TYPE,BOUNDARY_PARAMS,THREADS_PER_BLOCK,ENABLE_GRAVITY,INTERACTION_TYPE
+
+
+max_velocity = 1e3  # Adjust as neededto avoid overflows
 
 # CUDA Kernel for updating particle positions and velocities
 @cuda.jit
@@ -29,30 +32,25 @@ def update_particles(positions, velocities, forces, num_particles, dt, enable_gr
     idx = cuda.grid(1)
     if idx >= num_particles:
         return
-
      # handle inter-particle interactions
     if interaction_type > 0:
-
         for j in range(num_particles):
             if idx != j:
                 dx = positions[j, 0] - positions[idx, 0]
                 dy = positions[j, 1] - positions[idx, 1]
                 dz = positions[j, 2] - positions[idx, 2]
-                dist = math.sqrt(dx**2 + dy**2 + dz**2 + 1e-6)  # Avoid division by zero
-
+                dist = max(math.sqrt(dx**2 + dy**2 + dz**2), 1e-6)  # Avoid division by zero
                 if interaction_type == 1:
                     # Compute repulsive/attractive force (inverse-square law)
                     force_magnitude = -REPULSIVE_CONSTANT / (dist**2)
                     forces[idx, 0] += force_magnitude * dx / dist
                     forces[idx, 1] += force_magnitude * dy / dist
                     forces[idx, 2] += force_magnitude * dz / dist
-
                 elif interaction_type == 2:
                     # Compute logic for "sticky interaction"
                     forces[idx, 0] = 0
                     forces[idx, 1] = 0
                     forces[idx, 2] = 0
-
     # Add gravity to the forces
     if enable_gravity:
         forces[idx, 1] += -9.8 * PARTICLE_MASS
@@ -62,17 +60,19 @@ def update_particles(positions, velocities, forces, num_particles, dt, enable_gr
     velocities[idx, 1] += forces[idx, 1] * dt / PARTICLE_MASS
     velocities[idx, 2] += forces[idx, 2] * dt / PARTICLE_MASS
 
+
+    velocities[idx, 0] = max(min(velocities[idx, 0], max_velocity), -max_velocity)
+    velocities[idx, 1] = max(min(velocities[idx, 1], max_velocity), -max_velocity)
+    velocities[idx, 2] = max(min(velocities[idx, 2], max_velocity), -max_velocity)
+
     # Update positions
     positions[idx, 0] += velocities[idx, 0] * dt
     positions[idx, 1] += velocities[idx, 1] * dt
     positions[idx, 2] += velocities[idx, 2] * dt
-
     # Reset forces
     forces[idx, 0] = 0.0
     forces[idx, 1] = 0.0
     forces[idx, 2] = 0.0
-
-
     # Handle boundary interactions and boundary conditions
     if domain_type == 1:  # Sphere
         radius = domain_params[0]
@@ -87,7 +87,6 @@ def update_particles(positions, velocities, forces, num_particles, dt, enable_gr
                 velocities[idx, 0] *= BOUNCE_FACTOR_BOUNDARY
                 velocities[idx, 1] *= BOUNCE_FACTOR_BOUNDARY
                 velocities[idx, 2] *= BOUNCE_FACTOR_BOUNDARY
-
     elif domain_type == 2:  # Cube
         bounds = domain_params[0]
         for dim in range(3):
@@ -95,6 +94,10 @@ def update_particles(positions, velocities, forces, num_particles, dt, enable_gr
                 if BOUNCE_FACTOR_BOUNDARY > 0:
                     positions[idx, dim] = math.copysign(bounds, positions[idx, dim])
                     velocities[idx, dim] *= BOUNCE_FACTOR_BOUNDARY
+
+
+    if math.isnan(positions[idx, 0]) or math.isnan(positions[idx, 1]) or math.isnan(positions[idx, 2]):
+      print("NaN detected at idx", idx)
 
 def random_positions(boundary_type, boundary_params, num_particles):
     positions = np.zeros((num_particles, 3), dtype=np.float32)
@@ -106,20 +109,15 @@ def random_positions(boundary_type, boundary_params, num_particles):
             phi = np.random.uniform(0, np.pi)
             r = radius * (np.random.rand() ** (1/3))  # To ensure uniform distribution inside the sphere
             positions[i] = r * np.array([np.sin(phi) * np.cos(theta), np.sin(phi) * np.sin(theta), np.cos(phi)])
-
     elif boundary_type == "cube":
         bounds = boundary_params[0]
         for i in range(num_particles):
             positions[i] = np.random.uniform(-bounds, bounds, size=3)
-
     elif boundary_type == "cuboid":
         bounds = boundary_params
         for i in range(num_particles):
             positions[i] = np.random.uniform(-bounds[0], bounds[0]), np.random.uniform(-bounds[1], bounds[1]), np.random.uniform(-bounds[2], bounds[2])
-
     return positions
-
-
 def line_positions(boundary_type, boundary_params, num_particles):
     positions = np.zeros((num_particles, 3), dtype=np.float32)
     if boundary_type == "cube":
@@ -130,8 +128,6 @@ def line_positions(boundary_type, boundary_params, num_particles):
             t = np.random.rand()  # Random parameter along the line
             positions[i] = (1 - t) * p1 + t * p2  # Linear interpolation between p1 and p2
     return positions
-
-
 def circle_positions(boundary_type, boundary_params, num_particles):
     positions = np.zeros((num_particles, 3), dtype=np.float32)
     if boundary_type == "sphere":
@@ -141,13 +137,9 @@ def circle_positions(boundary_type, boundary_params, num_particles):
             theta = np.random.uniform(0, 2 * np.pi)
             phi = np.random.uniform(0, np.pi)
             positions[i] = radius * np.array([np.sin(phi) * np.cos(theta), np.sin(phi) * np.sin(theta), np.cos(phi)])
-
     return positions
-
-
 def simulate_particles():
     num_frames = int(SIMULATION_TIME / TIME_STEP)
-
     # Select position initialization based on boundary type
     if BOUNDARY_TYPE == "sphere":
         positions = random_positions(BOUNDARY_TYPE, [BOUNDARY_PARAMS["sphere"]["radius"]], NUM_PARTICLES)
@@ -157,16 +149,13 @@ def simulate_particles():
         positions = random_positions(BOUNDARY_TYPE, [BOUNDARY_PARAMS["cuboid"]["bounds"]], NUM_PARTICLES)
     else:
         positions = random_positions(BOUNDARY_TYPE, [0.0], NUM_PARTICLES)  # Default case, no boundaries
-
     velocities = np.zeros((NUM_PARTICLES, 3), dtype=np.float32)
     forces = np.zeros((NUM_PARTICLES, 3), dtype=np.float32)
     trajectories = np.zeros((num_frames, NUM_PARTICLES, 3), dtype=np.float32)
-
     # Allocate GPU memory
     d_positions = cuda.to_device(positions)
     d_velocities = cuda.to_device(velocities)
     d_forces = cuda.to_device(forces)
-
     # Determine domain type and parameters
     domain_type = 0  # Default: no domain
     domain_params = np.array([0.0], dtype=np.float32)
@@ -176,25 +165,24 @@ def simulate_particles():
     elif BOUNDARY_TYPE == "cube":
         domain_type = 2
         domain_params = np.array([BOUNDARY_PARAMS["cube"]["bounds"]], dtype=np.float32)
-
     d_domain_params = cuda.to_device(domain_params)
 
     # CUDA kernel configuration
     blocks = (NUM_PARTICLES + THREADS_PER_BLOCK - 1) // THREADS_PER_BLOCK
 
+
     # Simulation loop
-    for frame in range(num_frames):
+    for frame in tqdm(range(num_frames), desc="Calculating simulation frames"):
         update_particles[blocks, THREADS_PER_BLOCK](
             d_positions, d_velocities, d_forces, NUM_PARTICLES, TIME_STEP,
             ENABLE_GRAVITY, INTERACTION_TYPE, domain_type, d_domain_params
         )
         cuda.synchronize()
         trajectories[frame] = d_positions.copy_to_host()
-        print(f"Frame {frame + 1}/{num_frames} simulated.")
+
 
     np.save("trajectories.npy", trajectories)
     print("Simulation complete. Trajectories saved to 'trajectories.npy'.")
-
 
 if __name__ == "__main__":
     simulate_particles()

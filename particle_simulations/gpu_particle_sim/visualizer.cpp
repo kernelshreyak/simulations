@@ -36,6 +36,7 @@
 #include <cmath>
 #include <thread>
 #include <chrono>
+#include <iostream>
 
 // Globals for camera interaction
 float camera_zoom = 45.0f;
