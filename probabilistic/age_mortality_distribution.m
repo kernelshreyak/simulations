@@ -4,12 +4,13 @@
 % 2) Normalizes the combined PDF.
 % 3) Plots the combined PDF and conditional probabilities.
 
+
 clc;
 close all;
 
 %--- Define the unnormalized combined PDF ---
 combined_pdf = @(t) ( ...
-    (0.1007 * exp(-t) .* (t >= 0 & t < 5)) + ...       % Child mortality component
+    (0.3007 * exp(-t) .* (t >= 0 & t < 5)) + ...       % Child mortality component
     (3e-9 * t.^2 .* (100 - t).^2 .* (t >= 5 & t <= 100)) ... % Quadratic component
 );
 
