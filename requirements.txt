@@ -8,3 +8,6 @@ pyarrow
 seaborn
 pybullet
 manim
+openai
+openai-agents
+python-dotenv
