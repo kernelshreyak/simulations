@@ -1,9 +1,13 @@
-import pybullet as p
-import time
-import pybullet_data
 import math
+import time
 
-def create_circular_container(radius=2.0, height=1.0, wall_thickness=0.1, num_segments=20):
+import pybullet as p
+import pybullet_data
+
+
+def create_circular_container(
+    radius=2.0, height=1.0, wall_thickness=0.1, num_segments=20
+):
     """Create a circular container using multiple wall segments arranged in a circle."""
     walls = []
     # Define a transparent color for the walls (e.g., light blue with 50% transparency)
@@ -28,7 +32,7 @@ def create_circular_container(radius=2.0, height=1.0, wall_thickness=0.1, num_se
         # Create wall collision shape
         wall_collision_shape = p.createCollisionShape(
             shapeType=p.GEOM_BOX,
-            halfExtents=[wall_length / 2, wall_thickness / 2, height / 2]
+            halfExtents=[wall_length / 2, wall_thickness / 2, height / 2],
         )
 
         # Wall orientation quaternion
@@ -39,7 +43,7 @@ def create_circular_container(radius=2.0, height=1.0, wall_thickness=0.1, num_se
             shapeType=p.GEOM_BOX,
             halfExtents=[wall_length / 2, wall_thickness / 2, height / 2],
             rgbaColor=wall_color,
-            specularColor=[0.5, 0.5, 0.5]
+            specularColor=[0.5, 0.5, 0.5],
         )
 
         # Create wall multi-body
@@ -48,11 +52,12 @@ def create_circular_container(radius=2.0, height=1.0, wall_thickness=0.1, num_se
             baseCollisionShapeIndex=wall_collision_shape,
             baseVisualShapeIndex=wall_visual_shape,
             basePosition=[mx, my, height / 2],
-            baseOrientation=orientation_quat
+            baseOrientation=orientation_quat,
         )
 
         walls.append(wall)
     return walls
+
 
 def create_rotating_blade():
     """Create a rotating blade attached to the ground via a revolute joint."""
@@ -94,9 +99,10 @@ def create_rotating_blade():
         linkInertialFrameOrientations=[[0, 0, 0, 1]],
         linkParentIndices=[0],
         linkJointTypes=joint_type,
-        linkJointAxis=joint_axis
+        linkJointAxis=joint_axis,
     )
     return blade_body
+
 
 def run_simulation(num_spheres=250, simulation_time=10):
     """Run the physics simulation with the rotating blade and falling spheres."""
@@ -109,7 +115,7 @@ def run_simulation(num_spheres=250, simulation_time=10):
     plane_id = p.loadURDF("plane.urdf")
 
     # Create circular container with transparent walls
-    create_circular_container(height=8,radius=1.7)
+    create_circular_container(height=8, radius=1.7)
 
     # Create rotating blade
     blade_body = create_rotating_blade()
@@ -130,7 +136,7 @@ def run_simulation(num_spheres=250, simulation_time=10):
             baseCollisionShapeIndex=sphere_collision_shape,
             baseVisualShapeIndex=sphere_visual_shape,
             basePosition=[x, y, z],
-            baseOrientation=[0, 0, 0, 1]
+            baseOrientation=[0, 0, 0, 1],
         )
         spheres.append(sphere)
 
@@ -143,7 +149,7 @@ def run_simulation(num_spheres=250, simulation_time=10):
             jointIndex=0,
             controlMode=p.VELOCITY_CONTROL,
             targetVelocity=10000,  # radians per second
-            force=5000
+            force=5000,
         )
         p.stepSimulation()
         time.sleep(1.0 / 240.0)  # Real-time simulation
@@ -151,9 +157,10 @@ def run_simulation(num_spheres=250, simulation_time=10):
     # Disconnect the simulation
     p.disconnect()
 
+
 if __name__ == "__main__":
     # Set parameters
-    num_spheres = 250      # Number of spheres to drop
-    simulation_time = 30   # Duration of the simulation in seconds
+    num_spheres = 100  # Number of spheres to drop
+    simulation_time = 30  # Duration of the simulation in seconds
 
     run_simulation(num_spheres, simulation_time)
