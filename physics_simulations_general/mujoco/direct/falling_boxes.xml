@@ -1,0 +1,99 @@
+<mujoco>
+  <option timestep="0.002" gravity="0 0 -9.81" />
+  <worldbody>
+
+    <!-- Lighting -->
+    <light diffuse="0.6 0.6 0.6" pos="0 0 5" dir="0 0 -1" />
+    <light diffuse="0.4 0.4 0.4" pos="2 2 5" dir="-1 -1 -1" />
+
+    <!-- Ground -->
+    <geom type="plane" size="5 5 0.1" rgba="0.9 0.9 0.9 1" />
+
+    <!-- Random-looking falling boxes -->
+    <!-- Layer 1 -->
+    <body pos="-0.3  0.1  2.0"><joint type="free" /><geom
+                type="box"
+                size=".08 .12 .1"
+                rgba="0 0.8 0.3 1"
+            /></body>
+    <body pos=" 0.2 -0.2  2.2"><joint type="free" /><geom
+                type="box"
+                size=".1  .1  .12"
+                rgba="0.1 0.7 0.9 1"
+            /></body>
+    <body pos=" 0.4  0.3  2.4"><joint type="free" /><geom
+                type="box"
+                size=".09 .14 .11"
+                rgba="0.9 0.4 0.2 1"
+            /></body>
+
+    <!-- Layer 2 -->
+    <body pos="-0.5 -0.3  3.0"><joint type="free" /><geom
+                type="box"
+                size=".1 .2 .15"
+                rgba="0.2 0.8 0.2 1"
+            /></body>
+    <body pos=" 0.1  0.4  3.3"><joint type="free" /><geom
+                type="box"
+                size=".12 .1 .1"
+                rgba="0.8 0.2 0.7 1"
+            /></body>
+    <body pos=" 0.6 -0.1  3.6"><joint type="free" /><geom
+                type="box"
+                size=".1 .15 .12"
+                rgba="0.2 0.6 0.9 1"
+            /></body>
+
+    <!-- Layer 3 -->
+    <body pos="-0.4  0.2  4.2"><joint type="free" /><geom
+                type="box"
+                size=".11 .11 .14"
+                rgba="0.9 0.9 0.2 1"
+            /></body>
+    <body pos=" 0.0 -0.4  4.5"><joint type="free" /><geom
+                type="box"
+                size=".1 .18 .1"
+                rgba="0.4 0.9 0.4 1"
+            /></body>
+    <body pos=" 0.5  0.1  4.9"><joint type="free" /><geom
+                type="box"
+                size=".13 .1 .1"
+                rgba="0.9 0.3 0.3 1"
+            /></body>
+
+    <!-- Layer 4 -->
+    <body pos="-0.6  0.0  5.6"><joint type="free" /><geom
+                type="box"
+                size=".1 .1 .2"
+                rgba="0.3 0.6 0.9 1"
+            /></body>
+    <body pos=" 0.3 -0.3  6.0"><joint type="free" /><geom
+                type="box"
+                size=".12 .14 .12"
+                rgba="0.8 0.6 0.1 1"
+            /></body>
+    <body pos=" 0.7  0.4  6.4"><joint type="free" /><geom
+                type="box"
+                size=".1 .1 .15"
+                rgba="0.6 0.2 0.9 1"
+            /></body>
+
+    <!-- High scatter -->
+    <body pos="-0.2  0.5  7.5"><joint type="free" /><geom
+                type="box"
+                size=".1 .1 .1"
+                rgba="0.2 0.9 0.6 1"
+            /></body>
+    <body pos=" 0.4 -0.6  8.2"><joint type="free" /><geom
+                type="box"
+                size=".12 .12 .12"
+                rgba="0.9 0.5 0.5 1"
+            /></body>
+    <body pos=" 0.0  0.0  9.0"><joint type="free" /><geom
+                type="box"
+                size=".15 .15 .15"
+                rgba="0.4 0.4 0.4 1"
+            /></body>
+
+  </worldbody>
+</mujoco>
