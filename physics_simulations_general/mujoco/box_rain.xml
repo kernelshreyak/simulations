@@ -14,7 +14,7 @@
     <body pos="1.063 0.027 13.715">
       <joint type="free"/>
       <geom type="box"
-            size="0.061 0.129 0.099"
+            size="0.070 0.202 0.144"
             rgba="0.80 0.17 0.87 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -22,7 +22,7 @@
     <body pos="0.105 0.965 7.726">
       <joint type="free"/>
       <geom type="box"
-            size="0.106 0.153 0.178"
+            size="0.158 0.247 0.296"
             rgba="0.37 0.97 0.93 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -30,7 +30,7 @@
     <body pos="-0.774 0.261 10.458">
       <joint type="free"/>
       <geom type="box"
-            size="0.173 0.137 0.067"
+            size="0.286 0.216 0.083"
             rgba="0.50 0.49 0.50 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -38,7 +38,7 @@
     <body pos="1.101 -0.360 4.685">
       <joint type="free"/>
       <geom type="box"
-            size="0.118 0.133 0.172"
+            size="0.181 0.210 0.285"
             rgba="0.58 0.27 0.93 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -46,7 +46,7 @@
     <body pos="-0.020 0.422 7.712">
       <joint type="free"/>
       <geom type="box"
-            size="0.078 0.140 0.150"
+            size="0.104 0.223 0.243"
             rgba="0.19 0.46 0.36 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -54,7 +54,7 @@
     <body pos="-0.790 -0.669 13.550">
       <joint type="free"/>
       <geom type="box"
-            size="0.165 0.100 0.146"
+            size="0.271 0.146 0.235"
             rgba="0.04 0.92 0.54 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -62,7 +62,7 @@
     <body pos="0.769 -0.538 6.513">
       <joint type="free"/>
       <geom type="box"
-            size="0.095 0.176 0.106"
+            size="0.137 0.293 0.157"
             rgba="0.50 0.96 0.90 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -70,7 +70,7 @@
     <body pos="-0.252 -0.462 11.685">
       <joint type="free"/>
       <geom type="box"
-            size="0.064 0.101 0.164"
+            size="0.077 0.148 0.269"
             rgba="0.92 0.23 0.08 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -78,7 +78,7 @@
     <body pos="0.691 0.292 4.850">
       <joint type="free"/>
       <geom type="box"
-            size="0.116 0.059 0.141"
+            size="0.176 0.068 0.225"
             rgba="0.53 0.70 0.09 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -86,7 +86,7 @@
     <body pos="0.348 -0.311 7.992">
       <joint type="free"/>
       <geom type="box"
-            size="0.094 0.132 0.124"
+            size="0.134 0.209 0.192"
             rgba="0.62 0.06 0.23 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -94,7 +94,7 @@
     <body pos="-1.027 -0.280 7.772">
       <joint type="free"/>
       <geom type="box"
-            size="0.065 0.137 0.113"
+            size="0.078 0.217 0.172"
             rgba="0.50 0.60 0.93 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -102,7 +102,7 @@
     <body pos="0.213 -0.976 3.758">
       <joint type="free"/>
       <geom type="box"
-            size="0.140 0.092 0.148"
+            size="0.223 0.131 0.239"
             rgba="0.51 0.38 0.74 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -110,7 +110,7 @@
     <body pos="-0.761 -0.516 5.503">
       <joint type="free"/>
       <geom type="box"
-            size="0.104 0.168 0.156"
+            size="0.154 0.277 0.253"
             rgba="0.82 0.63 0.01 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -118,7 +118,7 @@
     <body pos="-0.513 0.004 12.781">
       <joint type="free"/>
       <geom type="box"
-            size="0.097 0.122 0.160"
+            size="0.141 0.188 0.262"
             rgba="0.34 0.75 0.60 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -126,7 +126,7 @@
     <body pos="0.061 0.311 7.818">
       <joint type="free"/>
       <geom type="box"
-            size="0.065 0.167 0.176"
+            size="0.078 0.274 0.292"
             rgba="0.83 0.35 0.63 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -134,7 +134,7 @@
     <body pos="0.650 -1.051 11.473">
       <joint type="free"/>
       <geom type="box"
-            size="0.061 0.172 0.081"
+            size="0.071 0.285 0.110"
             rgba="0.96 0.23 0.54 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -142,7 +142,7 @@
     <body pos="0.796 1.170 10.468">
       <joint type="free"/>
       <geom type="box"
-            size="0.159 0.101 0.148"
+            size="0.259 0.148 0.238"
             rgba="0.38 0.93 0.77 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -150,7 +150,7 @@
     <body pos="-0.289 0.682 2.798">
       <joint type="free"/>
       <geom type="box"
-            size="0.170 0.140 0.093"
+            size="0.281 0.223 0.132"
             rgba="0.65 0.78 0.63 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -158,7 +158,7 @@
     <body pos="0.928 -0.203 5.840">
       <joint type="free"/>
       <geom type="box"
-            size="0.098 0.087 0.112"
+            size="0.143 0.120 0.170"
             rgba="0.76 0.87 0.63 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -166,7 +166,7 @@
     <body pos="0.686 1.128 9.916">
       <joint type="free"/>
       <geom type="box"
-            size="0.061 0.131 0.053"
+            size="0.071 0.206 0.055"
             rgba="0.68 1.00 0.49 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -174,7 +174,7 @@
     <body pos="1.039 -1.153 13.582">
       <joint type="free"/>
       <geom type="box"
-            size="0.072 0.159 0.089"
+            size="0.092 0.260 0.125"
             rgba="0.39 0.13 0.04 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -182,7 +182,7 @@
     <body pos="0.605 0.591 3.482">
       <joint type="free"/>
       <geom type="box"
-            size="0.131 0.083 0.167"
+            size="0.206 0.114 0.274"
             rgba="0.13 0.59 0.89 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -190,7 +190,7 @@
     <body pos="0.092 0.410 11.725">
       <joint type="free"/>
       <geom type="box"
-            size="0.142 0.157 0.079"
+            size="0.227 0.256 0.106"
             rgba="0.91 0.50 0.92 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -198,7 +198,7 @@
     <body pos="0.477 0.562 13.412">
       <joint type="free"/>
       <geom type="box"
-            size="0.064 0.163 0.088"
+            size="0.076 0.268 0.123"
             rgba="0.82 0.22 0.47 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -206,7 +206,7 @@
     <body pos="-0.866 0.733 5.511">
       <joint type="free"/>
       <geom type="box"
-            size="0.112 0.153 0.098"
+            size="0.168 0.249 0.143"
             rgba="0.89 0.51 0.94 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -214,7 +214,7 @@
     <body pos="0.651 1.185 10.551">
       <joint type="free"/>
       <geom type="box"
-            size="0.091 0.119 0.172"
+            size="0.128 0.183 0.285"
             rgba="0.92 0.25 0.26 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -222,7 +222,7 @@
     <body pos="-0.594 0.301 4.333">
       <joint type="free"/>
       <geom type="box"
-            size="0.142 0.092 0.159"
+            size="0.226 0.130 0.259"
             rgba="0.25 0.93 0.33 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -230,7 +230,7 @@
     <body pos="-1.116 -0.812 11.794">
       <joint type="free"/>
       <geom type="box"
-            size="0.072 0.083 0.179"
+            size="0.093 0.113 0.299"
             rgba="0.42 0.64 0.54 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -238,7 +238,7 @@
     <body pos="-0.075 0.954 2.438">
       <joint type="free"/>
       <geom type="box"
-            size="0.100 0.109 0.139"
+            size="0.145 0.163 0.221"
             rgba="0.73 0.00 0.10 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -246,7 +246,7 @@
     <body pos="-0.627 -0.398 11.213">
       <joint type="free"/>
       <geom type="box"
-            size="0.147 0.171 0.102"
+            size="0.236 0.282 0.150"
             rgba="0.42 0.14 0.89 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -254,7 +254,7 @@
     <body pos="0.956 1.094 10.805">
       <joint type="free"/>
       <geom type="box"
-            size="0.165 0.124 0.159"
+            size="0.271 0.192 0.260"
             rgba="0.33 0.76 0.76 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -262,7 +262,7 @@
     <body pos="0.284 0.814 10.114">
       <joint type="free"/>
       <geom type="box"
-            size="0.082 0.057 0.092"
+            size="0.112 0.063 0.131"
             rgba="0.20 0.91 0.53 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -270,7 +270,7 @@
     <body pos="0.551 1.020 11.488">
       <joint type="free"/>
       <geom type="box"
-            size="0.163 0.123 0.149"
+            size="0.267 0.190 0.240"
             rgba="0.96 0.44 0.70 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -278,7 +278,7 @@
     <body pos="1.087 -0.621 2.865">
       <joint type="free"/>
       <geom type="box"
-            size="0.112 0.166 0.118"
+            size="0.170 0.273 0.181"
             rgba="0.21 0.99 0.47 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -286,7 +286,7 @@
     <body pos="-0.150 -1.024 7.164">
       <joint type="free"/>
       <geom type="box"
-            size="0.177 0.106 0.151"
+            size="0.295 0.158 0.244"
             rgba="0.93 0.00 0.69 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -294,7 +294,7 @@
     <body pos="-0.858 0.021 12.240">
       <joint type="free"/>
       <geom type="box"
-            size="0.097 0.144 0.087"
+            size="0.140 0.230 0.121"
             rgba="0.60 0.73 0.54 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -302,7 +302,7 @@
     <body pos="-0.421 0.575 3.656">
       <joint type="free"/>
       <geom type="box"
-            size="0.093 0.152 0.115"
+            size="0.133 0.247 0.175"
             rgba="0.09 0.68 0.92 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -310,7 +310,7 @@
     <body pos="-0.788 1.005 2.053">
       <joint type="free"/>
       <geom type="box"
-            size="0.174 0.129 0.084"
+            size="0.289 0.202 0.115"
             rgba="0.16 0.44 0.43 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -318,7 +318,7 @@
     <body pos="0.015 0.041 3.041">
       <joint type="free"/>
       <geom type="box"
-            size="0.082 0.069 0.157"
+            size="0.112 0.086 0.255"
             rgba="0.15 0.67 0.09 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -326,7 +326,7 @@
     <body pos="0.367 -0.157 8.035">
       <joint type="free"/>
       <geom type="box"
-            size="0.147 0.090 0.140"
+            size="0.237 0.128 0.224"
             rgba="0.91 0.74 0.60 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -334,7 +334,7 @@
     <body pos="0.457 0.942 2.302">
       <joint type="free"/>
       <geom type="box"
-            size="0.179 0.111 0.166"
+            size="0.299 0.167 0.274"
             rgba="0.06 0.28 0.56 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -342,7 +342,7 @@
     <body pos="0.165 1.055 5.789">
       <joint type="free"/>
       <geom type="box"
-            size="0.081 0.132 0.071"
+            size="0.110 0.209 0.091"
             rgba="0.91 0.23 0.00 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -350,7 +350,7 @@
     <body pos="0.304 -0.655 12.974">
       <joint type="free"/>
       <geom type="box"
-            size="0.064 0.115 0.128"
+            size="0.076 0.175 0.200"
             rgba="0.50 0.06 0.52 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -358,7 +358,7 @@
     <body pos="-0.888 -1.095 12.879">
       <joint type="free"/>
       <geom type="box"
-            size="0.084 0.059 0.052"
+            size="0.115 0.068 0.053"
             rgba="0.86 0.86 0.74 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -366,7 +366,7 @@
     <body pos="0.701 -0.532 8.994">
       <joint type="free"/>
       <geom type="box"
-            size="0.146 0.082 0.145"
+            size="0.234 0.112 0.233"
             rgba="0.80 0.52 0.64 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -374,7 +374,7 @@
     <body pos="-1.138 -0.296 5.864">
       <joint type="free"/>
       <geom type="box"
-            size="0.097 0.170 0.172"
+            size="0.140 0.281 0.285"
             rgba="0.06 0.58 0.20 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -382,7 +382,7 @@
     <body pos="0.365 1.138 3.720">
       <joint type="free"/>
       <geom type="box"
-            size="0.100 0.094 0.142"
+            size="0.147 0.135 0.227"
             rgba="0.81 0.05 0.21 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -390,7 +390,7 @@
     <body pos="-0.307 1.106 11.144">
       <joint type="free"/>
       <geom type="box"
-            size="0.132 0.176 0.101"
+            size="0.207 0.292 0.149"
             rgba="0.80 0.25 0.26 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -398,7 +398,7 @@
     <body pos="0.998 0.764 9.493">
       <joint type="free"/>
       <geom type="box"
-            size="0.071 0.091 0.170"
+            size="0.090 0.129 0.281"
             rgba="0.46 0.04 0.23 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -406,7 +406,7 @@
     <body pos="0.215 0.867 7.469">
       <joint type="free"/>
       <geom type="box"
-            size="0.082 0.153 0.090"
+            size="0.112 0.249 0.128"
             rgba="0.27 0.58 0.52 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -414,7 +414,7 @@
     <body pos="0.872 -0.113 9.749">
       <joint type="free"/>
       <geom type="box"
-            size="0.110 0.138 0.167"
+            size="0.164 0.219 0.275"
             rgba="0.10 0.89 0.90 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -422,7 +422,7 @@
     <body pos="-0.333 -1.192 7.508">
       <joint type="free"/>
       <geom type="box"
-            size="0.138 0.076 0.074"
+            size="0.219 0.100 0.096"
             rgba="0.36 0.90 0.60 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -430,7 +430,7 @@
     <body pos="0.476 0.210 10.104">
       <joint type="free"/>
       <geom type="box"
-            size="0.107 0.115 0.064"
+            size="0.159 0.175 0.077"
             rgba="1.00 0.17 0.82 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -438,7 +438,7 @@
     <body pos="0.323 0.604 8.357">
       <joint type="free"/>
       <geom type="box"
-            size="0.122 0.095 0.060"
+            size="0.188 0.136 0.070"
             rgba="0.63 0.61 0.33 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -446,7 +446,7 @@
     <body pos="1.008 1.026 6.398">
       <joint type="free"/>
       <geom type="box"
-            size="0.110 0.078 0.144"
+            size="0.166 0.104 0.230"
             rgba="0.19 0.32 0.96 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -454,7 +454,7 @@
     <body pos="-0.832 0.948 8.718">
       <joint type="free"/>
       <geom type="box"
-            size="0.076 0.155 0.126"
+            size="0.100 0.252 0.196"
             rgba="0.78 0.38 0.31 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -462,7 +462,7 @@
     <body pos="-0.936 -0.893 8.204">
       <joint type="free"/>
       <geom type="box"
-            size="0.102 0.058 0.075"
+            size="0.149 0.065 0.097"
             rgba="0.49 0.05 0.01 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -470,7 +470,7 @@
     <body pos="0.396 -0.982 6.984">
       <joint type="free"/>
       <geom type="box"
-            size="0.171 0.062 0.101"
+            size="0.284 0.073 0.148"
             rgba="0.20 0.79 0.52 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -478,7 +478,7 @@
     <body pos="-0.998 0.621 13.063">
       <joint type="free"/>
       <geom type="box"
-            size="0.153 0.079 0.179"
+            size="0.247 0.105 0.297"
             rgba="0.68 0.38 0.09 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -486,7 +486,7 @@
     <body pos="0.070 -1.010 3.566">
       <joint type="free"/>
       <geom type="box"
-            size="0.135 0.147 0.130"
+            size="0.213 0.237 0.204"
             rgba="0.45 0.84 0.86 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -494,7 +494,7 @@
     <body pos="-1.112 0.570 11.697">
       <joint type="free"/>
       <geom type="box"
-            size="0.129 0.106 0.151"
+            size="0.201 0.157 0.244"
             rgba="0.03 0.90 0.54 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -502,7 +502,7 @@
     <body pos="0.205 0.395 7.621">
       <joint type="free"/>
       <geom type="box"
-            size="0.089 0.082 0.071"
+            size="0.124 0.112 0.091"
             rgba="0.01 0.86 0.97 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -510,7 +510,7 @@
     <body pos="0.453 -0.468 6.811">
       <joint type="free"/>
       <geom type="box"
-            size="0.156 0.112 0.101"
+            size="0.253 0.169 0.148"
             rgba="0.78 0.27 0.11 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -518,7 +518,7 @@
     <body pos="-0.249 0.919 13.945">
       <joint type="free"/>
       <geom type="box"
-            size="0.079 0.151 0.064"
+            size="0.105 0.245 0.076"
             rgba="0.66 0.12 0.22 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -526,7 +526,7 @@
     <body pos="0.676 -0.932 8.196">
       <joint type="free"/>
       <geom type="box"
-            size="0.094 0.179 0.149"
+            size="0.135 0.298 0.241"
             rgba="0.28 0.98 0.64 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -534,7 +534,7 @@
     <body pos="-0.824 -0.516 11.731">
       <joint type="free"/>
       <geom type="box"
-            size="0.175 0.055 0.124"
+            size="0.290 0.059 0.193"
             rgba="0.20 0.71 0.00 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -542,7 +542,7 @@
     <body pos="0.578 0.090 9.636">
       <joint type="free"/>
       <geom type="box"
-            size="0.113 0.138 0.158"
+            size="0.171 0.219 0.258"
             rgba="0.07 0.34 0.20 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -550,7 +550,7 @@
     <body pos="-0.100 0.251 6.870">
       <joint type="free"/>
       <geom type="box"
-            size="0.152 0.051 0.071"
+            size="0.246 0.053 0.091"
             rgba="0.14 0.09 0.60 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -558,7 +558,7 @@
     <body pos="0.445 -0.336 10.467">
       <joint type="free"/>
       <geom type="box"
-            size="0.097 0.126 0.055"
+            size="0.140 0.197 0.060"
             rgba="0.34 0.06 0.75 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -566,7 +566,7 @@
     <body pos="0.393 0.855 12.549">
       <joint type="free"/>
       <geom type="box"
-            size="0.121 0.069 0.089"
+            size="0.187 0.086 0.125"
             rgba="0.64 0.69 0.70 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -574,7 +574,7 @@
     <body pos="-0.958 -0.901 10.693">
       <joint type="free"/>
       <geom type="box"
-            size="0.061 0.116 0.107"
+            size="0.071 0.178 0.160"
             rgba="0.82 0.09 0.74 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -582,7 +582,7 @@
     <body pos="-0.397 0.433 3.954">
       <joint type="free"/>
       <geom type="box"
-            size="0.131 0.148 0.140"
+            size="0.205 0.238 0.223"
             rgba="0.77 0.61 0.52 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -590,7 +590,7 @@
     <body pos="0.409 -0.911 10.007">
       <joint type="free"/>
       <geom type="box"
-            size="0.069 0.111 0.110"
+            size="0.087 0.167 0.166"
             rgba="0.12 0.22 0.72 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -598,7 +598,7 @@
     <body pos="0.332 -0.039 10.196">
       <joint type="free"/>
       <geom type="box"
-            size="0.101 0.112 0.105"
+            size="0.147 0.169 0.155"
             rgba="0.76 0.07 0.81 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -606,7 +606,7 @@
     <body pos="-1.174 -0.421 13.671">
       <joint type="free"/>
       <geom type="box"
-            size="0.079 0.097 0.072"
+            size="0.106 0.140 0.092"
             rgba="0.84 0.18 0.39 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -614,7 +614,7 @@
     <body pos="-0.373 -0.690 8.658">
       <joint type="free"/>
       <geom type="box"
-            size="0.097 0.172 0.110"
+            size="0.140 0.285 0.165"
             rgba="0.72 0.03 0.84 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -622,7 +622,7 @@
     <body pos="0.222 -0.481 8.626">
       <joint type="free"/>
       <geom type="box"
-            size="0.052 0.070 0.142"
+            size="0.053 0.089 0.227"
             rgba="0.47 0.90 0.71 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -630,7 +630,7 @@
     <body pos="1.053 0.845 3.443">
       <joint type="free"/>
       <geom type="box"
-            size="0.160 0.140 0.074"
+            size="0.262 0.224 0.096"
             rgba="0.14 0.31 0.81 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -638,7 +638,7 @@
     <body pos="-0.268 0.098 8.015">
       <joint type="free"/>
       <geom type="box"
-            size="0.132 0.107 0.059"
+            size="0.208 0.159 0.067"
             rgba="0.96 0.57 0.04 1"
             friction="0.8 0.1 0.1"/>
     </body>
@@ -646,8 +646,168 @@
     <body pos="-0.729 1.060 13.505">
       <joint type="free"/>
       <geom type="box"
-            size="0.117 0.097 0.107"
+            size="0.178 0.141 0.160"
             rgba="0.34 0.50 0.62 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="-0.861 1.128 4.571">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.072 0.206 0.140"
+            rgba="0.75 0.18 0.55 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="-0.882 0.798 4.887">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.291 0.107 0.197"
+            rgba="0.43 0.96 0.36 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="0.219 0.950 3.200">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.176 0.269 0.118"
+            rgba="0.13 0.60 0.83 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="0.947 -0.003 4.468">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.053 0.150 0.086"
+            rgba="0.60 0.70 0.69 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="-0.680 1.180 11.466">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.213 0.254 0.289"
+            rgba="0.36 0.80 0.43 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="-0.209 1.184 3.877">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.178 0.253 0.214"
+            rgba="0.41 0.79 0.25 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="0.075 0.049 4.049">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.099 0.268 0.081"
+            rgba="0.98 0.35 0.98 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="0.556 0.015 12.662">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.081 0.194 0.236"
+            rgba="0.74 0.32 0.07 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="1.119 1.025 5.960">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.262 0.090 0.124"
+            rgba="0.99 0.12 0.60 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="0.596 0.778 13.312">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.071 0.234 0.219"
+            rgba="0.52 0.28 0.86 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="-0.302 0.427 6.121">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.164 0.296 0.106"
+            rgba="0.85 0.08 0.97 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="0.351 -0.348 11.697">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.240 0.293 0.229"
+            rgba="0.79 0.40 0.83 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="0.685 0.016 5.180">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.297 0.171 0.255"
+            rgba="0.08 0.33 0.21 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="0.613 -0.229 11.834">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.141 0.135 0.136"
+            rgba="0.26 0.59 0.53 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="1.006 -0.318 3.756">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.271 0.291 0.191"
+            rgba="0.08 0.52 0.21 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="-0.331 -0.152 2.788">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.181 0.182 0.117"
+            rgba="0.11 0.61 0.68 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="1.169 0.297 4.551">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.102 0.054 0.074"
+            rgba="0.83 0.04 0.47 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="-0.706 0.357 11.499">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.192 0.227 0.061"
+            rgba="0.10 0.06 0.26 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="-1.146 0.607 12.253">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.242 0.117 0.155"
+            rgba="0.66 0.18 0.32 1"
+            friction="0.8 0.1 0.1"/>
+    </body>
+
+    <body pos="0.477 -0.004 6.691">
+      <joint type="free"/>
+      <geom type="box"
+            size="0.107 0.249 0.130"
+            rgba="0.42 0.56 0.19 1"
             friction="0.8 0.1 0.1"/>
     </body>
 

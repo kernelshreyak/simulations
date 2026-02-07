@@ -1,0 +1,96 @@
+<mujoco>
+  <option timestep="0.002" gravity="0 0 -9.81" />
+  <compiler angle="degree" />
+
+  <default>
+    <geom friction="1.5 0.1 0.1" density="800" />
+  </default>
+
+  <worldbody>
+
+    <!-- Ground -->
+    <geom type="plane" size="10 10 0.1" rgba="0.9 0.9 0.9 1" />
+
+    <!-- ================= VEHICLE ================= -->
+    <body name="chassis" pos="0 0 0.35">
+
+      <!-- Chassis -->
+      <geom type="box" size="0.3 0.2 0.1" rgba="0.2 0.2 0.8 1" />
+
+      <!-- ========== REAR LEFT (DRIVE) ========== -->
+      <body pos="-0.25  0.20 -0.15">
+        <joint name="rear_left" type="hinge" axis="0 1 0" />
+        <geom
+                    type="cylinder"
+                    size="0.08 0.04"
+                    quat="0.7071 0 0.7071 0"
+                    rgba="0 0 0 1"
+                />
+      </body>
+
+      <!-- ========== REAR RIGHT (DRIVE) ========== -->
+      <body pos="-0.25 -0.20 -0.15">
+        <joint name="rear_right" type="hinge" axis="0 1 0" />
+        <geom
+                    type="cylinder"
+                    size="0.08 0.04"
+                    quat="0.7071 0 0.7071 0"
+                    rgba="0 0 0 1"
+                />
+      </body>
+
+      <!-- ========== FRONT LEFT (STEER + ROLL) ========== -->
+      <body pos="0.25  0.20 -0.15">
+        <!-- Steering joint -->
+        <joint name="steer_fl" type="hinge" axis="0 0 1" range="-30 30" />
+
+        <!-- REQUIRED inertial for steering body -->
+        <inertial pos="0 0 0" mass="0.5" diaginertia="0.001 0.001 0.001" />
+
+        <!-- Wheel -->
+        <body>
+          <joint name="wheel_fl" type="hinge" axis="0 1 0" />
+          <geom
+                        type="cylinder"
+                        size="0.08 0.04"
+                        quat="0.7071 0 0.7071 0"
+                        rgba="0 0 0 1"
+                    />
+        </body>
+      </body>
+
+      <!-- ========== FRONT RIGHT (STEER + ROLL) ========== -->
+      <body pos="0.25 -0.20 -0.15">
+        <joint name="steer_fr" type="hinge" axis="0 0 1" range="-30 30" />
+
+        <!-- REQUIRED inertial for steering body -->
+        <inertial pos="0 0 0" mass="0.5" diaginertia="0.001 0.001 0.001" />
+
+        <body>
+          <joint name="wheel_fr" type="hinge" axis="0 1 0" />
+          <geom
+                        type="cylinder"
+                        size="0.08 0.04"
+                        quat="0.7071 0 0.7071 0"
+                        rgba="0 0 0 1"
+                    />
+        </body>
+      </body>
+
+    </body>
+  </worldbody>
+
+  <!-- ================= ACTUATORS ================= -->
+  <actuator>
+
+    <!-- Rear-wheel differential drive -->
+    <motor joint="rear_left" gear="40" />
+    <motor joint="rear_right" gear="40" />
+
+    <!-- Front steering -->
+    <position joint="steer_fl" kp="80" />
+    <position joint="steer_fr" kp="80" />
+
+  </actuator>
+
+</mujoco>

@@ -72,11 +72,11 @@ def main():
     xml_path = Path("box_rain.xml")
     xml_path.write_text(
         generate_box_rain_xml(
-            n_boxes=80,
+            n_boxes=100,
             z_min=2.0,
             z_max=14.0,
             xy_spread=1.2,
-            size_range=(0.05, 0.18),
+            size_range=(0.05, 0.3),
             seed=4,
         )
     )
