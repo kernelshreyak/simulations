@@ -1,0 +1,117 @@
+<mujoco model="newtons_cradle">
+
+  <compiler angle="radian" coordinate="local" />
+  <option
+        timestep="0.0005"
+        gravity="0 0 -9.81"
+        iterations="100"
+        solver="Newton"
+    />
+
+  <!-- ================= DEFAULTS ================= -->
+  <default>
+    <geom
+            type="sphere"
+            size="0.02"
+            mass="1"
+            friction="0 0 0"
+            solref="0.001 1"
+            solimp="0.95 0.95 0.001"
+            condim="1"
+            rgba="0.8 0.8 0.85 1"
+        />
+
+    <joint type="hinge" axis="0 1 0" damping="0" armature="0" />
+  </default>
+
+  <!-- ================= ASSETS ================= -->
+  <asset>
+    <texture
+            name="sky"
+            type="skybox"
+            builtin="gradient"
+            rgb1="0.2 0.3 0.5"
+            rgb2="0.8 0.9 1"
+            width="512"
+            height="512"
+        />
+
+    <material name="metal" specular="0.9" shininess="0.8" reflectance="0.2" />
+  </asset>
+
+  <!-- ================= WORLD ================= -->
+  <worldbody>
+
+    <!-- Global light -->
+    <light
+            name="sun"
+            directional="true"
+            diffuse="1 1 1"
+            specular="0.4 0.4 0.4"
+            pos="0 0 1"
+            dir="0 0 -1"
+            castshadow="true"
+        />
+
+    <!-- Fill light -->
+    <light
+            name="fill"
+            directional="false"
+            diffuse="0.3 0.3 0.3"
+            pos="0.5 0.5 0.5"
+        />
+
+    <!-- Ground -->
+    <geom type="plane" size="2 2 0.1" rgba="0.9 0.9 0.9 1" />
+
+    <!-- Support frame -->
+    <body name="frame" pos="0 0 0.6">
+      <geom type="box" size="0.3 0.01 0.01" rgba="0.3 0.3 0.3 1" />
+
+      <!-- BALL 1 -->
+      <body pos="-0.08 0 0" quat="0.955336 0 0.8 0">
+        <joint name="j1" />
+        <body pos="0 0 -0.3">
+          <geom material="metal" />
+        </body>
+      </body>
+
+      <!-- BALL 2 -->
+      <body pos="-0.04 0 0">
+        <joint name="j2" />
+        <body pos="0 0 -0.3">
+          <geom material="metal" />
+        </body>
+      </body>
+
+      <!-- BALL 3 -->
+      <body pos="0 0 0">
+        <joint name="j3" />
+        <body pos="0 0 -0.3">
+          <geom material="metal" />
+        </body>
+      </body>
+
+      <!-- BALL 4 -->
+      <body pos="0.04 0 0">
+        <joint name="j4" />
+        <body pos="0 0 -0.3">
+          <geom material="metal" />
+        </body>
+      </body>
+
+      <!-- BALL 5 -->
+      <body pos="0.08 0 0">
+        <joint name="j5" />
+        <body pos="0 0 -0.3">
+          <geom material="metal" />
+        </body>
+      </body>
+
+    </body>
+  </worldbody>
+
+  <!-- ================= INITIAL CONDITION ================= -->
+  <!-- First ball is pre-rotated about the hinge axis; no keyframe needed. -->
+
+</mujoco>
