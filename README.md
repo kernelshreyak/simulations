@@ -25,6 +25,7 @@ The repository is organized by topic rather than framework:
 | `gameoflife/` | Cellular automata and social simulation experiments |
 | `general_mathematics/` | Mathematical visualizations and projection-related code |
 | `javascript-simulations/` | Browser-based interactive simulations such as particle systems and fractal trees |
+| `instruct-ai-robot/` | A Pygame-based agent world where an LLM parses commands into movement, inventory, and object actions |
 | `market_simulation/` | Market dynamics, repayment models, and agent-based market experiments |
 | `monte-carlo-simulations/` | Stochastic simulations, including a wealth/lifetime outcome model |
 | `network_simulations/` | Network behavior and adaptation experiments |
@@ -35,6 +36,12 @@ The repository is organized by topic rather than framework:
 | `transport_simulations/` | Transport and multi-agent movement simulations |
 | `visualizations_manim/` | Manim-based mathematical or physical visualizations |
 
+There are also a few standalone files at the repository root:
+
+- `myplant.py` is a separate utility script for plant care tracking
+- `requirements.txt` captures the shared Python dependencies used by many of the examples
+- `REPO_SUMMARY.md` provides a brief generated overview of the repository structure
+
 ## Suggested Starting Points
 
 If you are new to the repository, these are good first projects to open:
@@ -44,6 +51,7 @@ If you are new to the repository, these are good first projects to open:
 - `physics_simulations_general/mujoco/box_rain.py` for physics simulation with MuJoCo
 - `market_simulation/marketsim.py` for a simple economic system model
 - `gameoflife/game.py` for classic rule-based emergent behavior
+- `instruct-ai-robot/robot-llm.py` for an LLM-driven command parser tied to a sprite-based world
 
 ## Setup
 
