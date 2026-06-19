@@ -28,6 +28,7 @@ The repository is organized by topic rather than framework:
 | `instruct-ai-robot/` | A Pygame-based agent world where an LLM parses commands into movement, inventory, and object actions |
 | `market_simulation/` | Market dynamics, repayment models, and agent-based market experiments |
 | `monte-carlo-simulations/` | Stochastic simulations, including a wealth/lifetime outcome model |
+| `modelica_simulations/` | Modelica-based mechanical simulations, including pendulum and multi-link robot examples |
 | `network_simulations/` | Network behavior and adaptation experiments |
 | `particle_simulations/` | Particle systems, including a GPU/OpenGL-oriented subproject |
 | `physics_simulations_general/` | General mechanics and MuJoCo-based simulations |
@@ -67,6 +68,7 @@ Notes:
 
 - Some subprojects have their own local requirements or external dependencies
 - MuJoCo-based examples require MuJoCo to be installed and working on your machine
+- Modelica examples under `modelica_simulations/` need a Modelica toolchain such as OpenModelica or Dymola to simulate and visualize the `.mo` files
 - GPU/OpenGL examples under `particle_simulations/gpu_particle_sim/` require a native toolchain and graphics libraries
 - Notebook-based work is easiest to explore in Jupyter
 
@@ -79,6 +81,14 @@ python monte-carlo-simulations/wealth_monte_carlo.py
 python physics_simulations_general/mujoco/box_rain.py
 python gameoflife/game.py
 python market_simulation/cc_repayment.py
+```
+
+For Modelica examples, open the `.mo` files in a Modelica environment and simulate the desired model:
+
+```text
+modelica_simulations/SimplePendulum.mo
+modelica_simulations/Pendulum3D.mo
+modelica_simulations/ThreeLinkRobot.mo
 ```
 
 For browser-based demos, open the HTML file in a browser:
