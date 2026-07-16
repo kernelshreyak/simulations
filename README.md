@@ -17,24 +17,24 @@ The repository is organized by topic rather than framework:
 
 | Folder | Focus |
 | --- | --- |
-| `agent-based-modeling/` | NetLogo-style agent-based models such as fire spread, segregation, and market behavior |
-| `agentic-gametheory/` | LLM-agent experiments around game theory |
-| `cell-simulation/` | Simple biological or growth-oriented simulations |
-| `cheminformatics/` | Chemistry-oriented data and visualization experiments |
-| `discrete-event/` | Queueing and event-driven systems such as refueling simulations |
-| `gameoflife/` | Cellular automata and social simulation experiments |
-| `general_mathematics/` | Mathematical visualizations and projection-related code |
-| `javascript-simulations/` | Browser-based interactive simulations such as particle systems and fractal trees |
-| `instruct-ai-robot/` | A Pygame-based agent world where an LLM parses commands into movement, inventory, and object actions |
+| `agent_based_models/` | NetLogo-style agent-based models such as fire spread, segregation, and market behavior |
+| `agentic_gametheory/` | LLM-agent experiments around game theory |
+| `cellular_simulation/` | Simple biological or growth-oriented simulations |
+| `molecular_simulation/` | Chemistry-oriented data and visualization experiments |
+| `discrete_event/` | Queueing and event-driven systems such as refueling simulations |
+| `cellular_automata/` | Cellular automata and social simulation experiments |
+| `math_visualizations/` | Mathematical visualizations and projection-related code |
+| `web_simulations/` | Browser-based interactive simulations such as particle systems and fractal trees |
+| `robot_world/` | A Pygame-based agent world where an LLM parses commands into movement, inventory, and object actions |
 | `market_simulation/` | Market dynamics, repayment models, and agent-based market experiments |
-| `monte-carlo-simulations/` | Stochastic simulations, including a wealth/lifetime outcome model |
-| `modelica_simulations/` | Modelica-based mechanical simulations, including pendulum and multi-link robot examples |
-| `network_simulations/` | Network behavior and adaptation experiments |
-| `particle_simulations/` | Particle systems, including a GPU/OpenGL-oriented subproject |
-| `physics_simulations_general/` | General mechanics and MuJoCo-based simulations |
-| `probabilistic/` | Probability and distribution-focused scripts in MATLAB/Octave style |
-| `scientific-computation/` | Numerical and visualization experiments |
-| `transport_simulations/` | Transport and multi-agent movement simulations |
+| `monte_carlo/` | Stochastic simulations, including a wealth/lifetime outcome model |
+| `modelica_models/` | Modelica-based mechanical simulations, including pendulum and multi-link robot examples |
+| `network_simulation/` | Network behavior and adaptation experiments |
+| `particle_simulation/` | Particle systems, including a GPU/OpenGL-oriented subproject |
+| `physics_simulation/` | General mechanics and MuJoCo-based simulations |
+| `probability_experiments/` | Probability and distribution-focused scripts in MATLAB/Octave style |
+| `numerical_computation/` | Numerical and visualization experiments |
+| `transport_simulation/` | Transport and multi-agent movement simulations |
 | `visualizations_manim/` | Manim-based mathematical or physical visualizations |
 
 There are also a few standalone files at the repository root:
@@ -47,12 +47,12 @@ There are also a few standalone files at the repository root:
 
 If you are new to the repository, these are good first projects to open:
 
-- `monte-carlo-simulations/wealth_monte_carlo.py` for a readable stochastic simulation with generated outputs
-- `javascript-simulations/bouncing-particles.html` for a quick browser-based interactive example
-- `physics_simulations_general/mujoco/box_rain.py` for physics simulation with MuJoCo
+- `monte_carlo/wealth_monte_carlo.py` for a readable stochastic simulation with generated outputs
+- `web_simulations/bouncing-particles.html` for a quick browser-based interactive example
+- `physics_simulation/mujoco/box_rain.py` for physics simulation with MuJoCo
 - `market_simulation/marketsim.py` for a simple economic system model
-- `gameoflife/game.py` for classic rule-based emergent behavior
-- `instruct-ai-robot/robot-llm.py` for an LLM-driven command parser tied to a sprite-based world
+- `cellular_automata/game.py` for classic rule-based emergent behavior
+- `robot_world/robot-llm.py` for an LLM-driven command parser tied to a sprite-based world
 
 ## Setup
 
@@ -77,9 +77,9 @@ Notes:
 Most projects are run directly from their folder. Examples:
 
 ```bash
-python monte-carlo-simulations/wealth_monte_carlo.py
-python physics_simulations_general/mujoco/box_rain.py
-python gameoflife/game.py
+python monte_carlo/wealth_monte_carlo.py
+python physics_simulation/mujoco/box_rain.py
+python cellular_automata/game.py
 python market_simulation/cc_repayment.py
 ```
 
