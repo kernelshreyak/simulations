@@ -30,6 +30,7 @@ The repository is organized by topic rather than framework:
 | `monte_carlo/` | Stochastic simulations, including a wealth/lifetime outcome model |
 | `modelica_models/` | Modelica-based mechanical simulations, including pendulum and multi-link robot examples |
 | `network_simulation/` | Network behavior and adaptation experiments |
+| `gpu_simulator/` | A visual CUDA teaching simulator that shows CTA scheduling, SM residency, warps, lanes, and memory spaces |
 | `particle_simulation/` | Particle systems, including a GPU/OpenGL-oriented subproject |
 | `physics_simulation/` | General mechanics and MuJoCo-based simulations |
 | `probability_experiments/` | Probability and distribution-focused scripts in MATLAB/Octave style |
@@ -49,6 +50,7 @@ If you are new to the repository, these are good first projects to open:
 
 - `monte_carlo/wealth_monte_carlo.py` for a readable stochastic simulation with generated outputs
 - `web_simulations/bouncing-particles.html` for a quick browser-based interactive example
+- `gpu_simulator/` for an interactive way to study CUDA execution concepts visually
 - `physics_simulation/mujoco/box_rain.py` for physics simulation with MuJoCo
 - `market_simulation/marketsim.py` for a simple economic system model
 - `cellular_automata/game.py` for classic rule-based emergent behavior
@@ -70,6 +72,7 @@ Notes:
 - MuJoCo-based examples require MuJoCo to be installed and working on your machine
 - Modelica examples under `modelica_simulations/` need a Modelica toolchain such as OpenModelica or Dymola to simulate and visualize the `.mo` files
 - GPU/OpenGL examples under `particle_simulations/gpu_particle_sim/` require a native toolchain and graphics libraries
+- The CUDA teaching visualizer under `gpu_simulator/` is easiest to run with `uv run --with pygame ...`
 - Notebook-based work is easiest to explore in Jupyter
 
 ## Running Simulations
@@ -81,6 +84,12 @@ python monte_carlo/wealth_monte_carlo.py
 python physics_simulation/mujoco/box_rain.py
 python cellular_automata/game.py
 python market_simulation/cc_repayment.py
+```
+
+For the CUDA teaching simulator:
+
+```bash
+uv run --with pygame python -m gpu_simulator
 ```
 
 For Modelica examples, open the `.mo` files in a Modelica environment and simulate the desired model:
@@ -108,6 +117,11 @@ A useful pattern is:
 5. Extend it with one new rule, visualization, or constraint
 
 This repository is especially useful when treated as a set of study cases rather than as finished products.
+
+If you want to understand GPU execution, `gpu_simulator/` is one of the few
+projects here that is explicitly pedagogical. It is designed to help you build
+intuition for CUDA concepts such as blocks, warps, SM residency, shared memory,
+and the distinction between per-thread registers and CTA-local state.
 
 ## Expectations and Limitations
 

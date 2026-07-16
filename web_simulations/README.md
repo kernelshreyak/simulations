@@ -1,4 +1,4 @@
-## JavaScript Simulations
+## Web-Based Simulations
 
 ### Bouncing Particles
 A simple simulation of ball-like particles in a container. Particles can be interactively added by the user.
