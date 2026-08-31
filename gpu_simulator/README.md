@@ -18,6 +18,9 @@ way to study how CUDA ideas fit together:
 The simulator loads a small Python kernel file, schedules CTAs onto SMs,
 issues warps round-robin, and records a trace that the Pygame GUI plays back.
 
+![GPU Simulator screenshot](https://github.com/kernelshreyak/gpu-simulator/blob/main/screenshot.png)
+
+
 ## Why This Is Useful
 
 This simulator is most useful if you are trying to understand CUDA mentally
