@@ -23,8 +23,6 @@ except Exception:  # pragma: no cover
     filedialog = None
 
 
-WINDOW_WIDTH = 1500
-WINDOW_HEIGHT = 960
 BACKGROUND = (10, 13, 17)
 PANEL = (20, 26, 34)
 PANEL_ALT = (28, 36, 46)
@@ -81,7 +79,9 @@ class SimulatorGUI:
 
         pygame.init()
         pygame.display.set_caption("CUDA Architecture Visualizer")
-        self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+        self.fullscreen = True
+        self.windowed_size = (1500, 960)
+        self.screen = self._create_display()
         self.clock = pygame.time.Clock()
         self.title_font = pygame.font.SysFont("consolas", 28, bold=True)
         self.body_font = pygame.font.SysFont("consolas", 18)
@@ -94,15 +94,51 @@ class SimulatorGUI:
         self.playback_fps = 4
         self.focus_lane = 0
         self.message = "Loading bundled sample kernel."
-        self.buttons = {
-            "load": Button(pygame.Rect(24, 20, 110, 38), "Load [L]"),
-            "run": Button(pygame.Rect(144, 20, 110, 38), "Run [R]"),
-            "play": Button(pygame.Rect(264, 20, 120, 38), "Play [Space]"),
-            "step": Button(pygame.Rect(394, 20, 110, 38), "Step [N]"),
-            "back": Button(pygame.Rect(514, 20, 110, 38), "Back [B]"),
-            "lane": Button(pygame.Rect(634, 20, 130, 38), "Lane [,/.]"),
-        }
+        self.buttons: dict[str, Button] = {}
         self.load_and_run(self.kernel_path)
+
+    def _create_display(self) -> "pygame.Surface":
+        if self.fullscreen:
+            info = pygame.display.Info()
+            width = max(1280, info.current_w)
+            height = max(720, info.current_h)
+            return pygame.display.set_mode((width, height), pygame.FULLSCREEN)
+        return pygame.display.set_mode(self.windowed_size, pygame.RESIZABLE)
+
+    def toggle_fullscreen(self) -> None:
+        if not self.fullscreen:
+            self.windowed_size = self.screen.get_size()
+        self.fullscreen = not self.fullscreen
+        self.screen = self._create_display()
+
+    def make_rect(self, x: float, y: float, w: float, h: float) -> "pygame.Rect":
+        width, height = self.screen.get_size()
+        return pygame.Rect(int(x * width), int(y * height), int(w * width), int(h * height))
+
+    def relx(self, value: float) -> int:
+        return int(self.screen.get_width() * value)
+
+    def rely(self, value: float) -> int:
+        return int(self.screen.get_height() * value)
+
+    def layout_buttons(self) -> None:
+        labels = [
+            ("load", "Load [L]"),
+            ("run", "Run [R]"),
+            ("play", "Play [Space]"),
+            ("step", "Step [N]"),
+            ("back", "Back [B]"),
+            ("lane", "Lane [,/.]"),
+        ]
+        x = self.relx(0.016)
+        y = self.rely(0.02)
+        height = max(38, self.rely(0.04))
+        gap = max(10, self.relx(0.008))
+        self.buttons = {}
+        for name, label in labels:
+            width = max(110, self.small_font.size(label)[0] + 28)
+            self.buttons[name] = Button(pygame.Rect(x, y, width, height), label)
+            x += width + gap
 
     def load_and_run(self, path: str) -> None:
         try:
@@ -188,11 +224,12 @@ class SimulatorGUI:
         self.screen.blit(title_surface, (rect.x + 14, rect.y + 10))
 
     def draw_header(self) -> None:
+        self.layout_buttons()
         title = self.title_font.render("CUDA Architecture Visualizer", True, TEXT)
-        self.screen.blit(title, (24, 68))
+        self.screen.blit(title, (self.relx(0.016), self.rely(0.07)))
         status_color = WARNING if "failed" in self.message.lower() else MUTED
         status = self.small_font.render(self.message, True, status_color)
-        self.screen.blit(status, (24, 104))
+        self.screen.blit(status, (self.relx(0.016), self.rely(0.108)))
         for button in self.buttons.values():
             button.draw(self.screen, self.small_font)
 
@@ -205,7 +242,7 @@ class SimulatorGUI:
             )
             self.screen.blit(
                 self.small_font.render(summary, True, ACCENT),
-                (820, 32),
+                (self.relx(0.60), self.rely(0.032)),
             )
 
     def draw_sm_overview(self, rect: "pygame.Rect", trace: WarpTrace | None) -> None:
@@ -362,11 +399,11 @@ class SimulatorGUI:
     def draw_footer(self) -> None:
         help_text = (
             "Keys: L load | R rerun | Space play/pause | N/Right next warp | "
-            "B/Left back | ,/. lane | Up/Down speed"
+            "B/Left back | ,/. lane | Up/Down speed | F11 fullscreen"
         )
         self.screen.blit(
             self.small_font.render(help_text, True, MUTED),
-            (24, WINDOW_HEIGHT - 28),
+            (self.relx(0.016), self.screen.get_height() - 28),
         )
 
     def render(self) -> None:
@@ -378,22 +415,22 @@ class SimulatorGUI:
         if lane is not None:
             highlight_addrs = {op.addr for op in lane.memory_ops}
 
-        self.draw_sm_overview(pygame.Rect(24, 140, 660, 300), trace)
-        self.draw_warp_lanes(pygame.Rect(704, 140, 520, 300), trace)
-        self.draw_scheduler(pygame.Rect(1244, 140, 232, 300), trace)
+        self.draw_sm_overview(self.make_rect(0.016, 0.145, 0.44, 0.30), trace)
+        self.draw_warp_lanes(self.make_rect(0.47, 0.145, 0.34, 0.30), trace)
+        self.draw_scheduler(self.make_rect(0.825, 0.145, 0.16, 0.30), trace)
         self.draw_memory_map(
-            pygame.Rect(24, 460, 480, 460),
+            self.make_rect(0.016, 0.48, 0.32, 0.47),
             "Global Memory",
             {} if trace is None else trace.global_memory_words,
             highlight_addrs,
         )
         self.draw_memory_map(
-            pygame.Rect(524, 460, 420, 460),
+            self.make_rect(0.35, 0.48, 0.28, 0.47),
             "Shared Memory (Current CTA)",
             {} if trace is None else trace.shared_memory_words,
             highlight_addrs,
         )
-        self.draw_lane_details(pygame.Rect(964, 460, 512, 460), lane)
+        self.draw_lane_details(self.make_rect(0.645, 0.48, 0.34, 0.47), lane)
         self.draw_footer()
         pygame.display.flip()
 
@@ -429,6 +466,8 @@ class SimulatorGUI:
                         self.playback_fps = min(30, self.playback_fps + 1)
                     elif event.key == pygame.K_DOWN:
                         self.playback_fps = max(1, self.playback_fps - 1)
+                    elif event.key == pygame.K_F11:
+                        self.toggle_fullscreen()
 
             if self.playing and self.result is not None and self.result.traces:
                 if timer_accumulator >= 1.0 / self.playback_fps:
